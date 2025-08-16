@@ -1,5 +1,6 @@
 package cihanbeyoglu.web;
 
+import cihanbeyoglu.context.Application;
 import cihanbeyoglu.model.Invoice;
 import cihanbeyoglu.service.InvoiceService;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -12,11 +13,6 @@ import java.util.List;
 
 public class MyFancyPdfInvoicesServlet extends HttpServlet {
 
-    private final ObjectMapper mapper = new ObjectMapper();
-
-    private final InvoiceService invoiceService = new InvoiceService();
-
-
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
 
@@ -24,11 +20,11 @@ public class MyFancyPdfInvoicesServlet extends HttpServlet {
             String userId = request.getParameter("user_id");
             Integer amount = Integer.valueOf(request.getParameter("amount"));
 
-            Invoice invoice = invoiceService.create(userId, amount);
+            Invoice invoice = Application.invoiceService.create(userId, amount);
 
             response.setContentType("application/json; charset=utf-8");
 
-            String json = new ObjectMapper().writeValueAsString(invoice);
+            String json = Application.objectMapper.writeValueAsString(invoice);
             response.getWriter().print(json);
         } else {
             response.setStatus(HttpServletResponse.SC_NOT_FOUND);
@@ -50,8 +46,8 @@ public class MyFancyPdfInvoicesServlet extends HttpServlet {
                             "</html>");
         } else if(request.getRequestURI().equals("/invoices")) {
             response.setContentType("application/json; charset=UTF-8");
-            List<Invoice> invoices = invoiceService.findAll();
-            response.getWriter().print(mapper.writeValueAsString(invoices));
+            List<Invoice> invoices = Application.invoiceService.findAll();
+            response.getWriter().print(Application.objectMapper.writeValueAsString(invoices));
         }
     }
 
