@@ -6,7 +6,7 @@
 *.class
 
 *.iml
-*lst
+/01-plain-java-my-fancy-pdf-invoices/target/
 
 # Package Files
 *.jar
