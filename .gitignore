@@ -1,0 +1,79 @@
+/.idea/
+
+/target/*
+
+/tomcat.8080/*
+
+# Compiled class files
+*.class
+
+*.iml
+
+# Package Files
+*.jar
+*.war
+*.ear
+*.zip
+*.tar.gz
+
+# Maven
+/target/
+pom.xml.tag
+pom.xml.bak
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+dependency-reduced-pom.xml
+buildNumber.properties
+.mvn/wrapper/maven-wrapper.jar
+
+# Gradle
+.gradle/
+/build/
+.settings/
+gradle.lockfile
+
+# Eclipse
+.classpath
+.project
+.settings/
+bin/
+tmp/
+.metadata
+.bak
+*.bak
+*.iml
+
+# IntelliJ IDEA
+.idea/
+*.iml
+*.iws
+*.ipr
+out/
+
+# NetBeans
+nbproject/private/
+build/
+nbbuild/
+dist/
+nbdist/
+.nbattrs
+nbproject/private/
+nbproject/build-impl.xml
+nbproject/jax-ws/
+nbproject/project.xml
+nbproject/project.properties
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# Log files
+*.log
+
+# Temporary files
+*~
+*.swp
+*.swo
+*.tmp
