@@ -1,13 +1,12 @@
 /.idea/
 
-/target/*
-
-/tomcat.8080/*
+*/tomcat.8080/*
 
 # Compiled class files
 *.class
 
 *.iml
+*lst
 
 # Package Files
 *.jar
