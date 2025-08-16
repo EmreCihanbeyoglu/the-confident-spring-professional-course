@@ -10,6 +10,7 @@
 
     <modules>
 	    <module>01-plain-java-my-fancy-pdf-invoices</module>
+        <module>01-plain-java-my-bank-practice</module>
     </modules>
 
 
@@ -29,6 +30,11 @@
                 <groupId>com.fasterxml.jackson.core</groupId>
                 <artifactId>jackson-databind</artifactId>
                 <version>2.19.0</version>
+            </dependency>
+            <dependency>
+                <groupId>com.fasterxml.jackson.datatype</groupId>
+                <artifactId>jackson-datatype-jsr310</artifactId>
+                <version>2.16.1</version> <!-- Use a compatible version -->
             </dependency>
         </dependencies>
     </dependencyManagement>
