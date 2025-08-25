@@ -11,6 +11,7 @@
     <modules>
 	    <module>01-plain-java-my-fancy-pdf-invoices</module>
         <module>01-plain-java-my-bank-practice</module>
+        <module>02-traditional-spring-pdf-invoice-app</module>
     </modules>
 
 
