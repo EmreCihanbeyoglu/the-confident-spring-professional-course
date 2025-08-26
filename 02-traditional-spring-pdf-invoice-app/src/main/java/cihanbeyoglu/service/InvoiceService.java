@@ -2,11 +2,13 @@ package cihanbeyoglu.service;
 
 import cihanbeyoglu.model.Invoice;
 import cihanbeyoglu.model.User;
+import org.springframework.stereotype.Component;
 
 import java.rmi.NoSuchObjectException;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 
+@Component
 public class InvoiceService {
 
     private final UserService userService;
