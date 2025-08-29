@@ -2,6 +2,9 @@ package cihanbeyoglu.service;
 
 import cihanbeyoglu.model.Invoice;
 import cihanbeyoglu.model.User;
+import jakarta.annotation.PostConstruct;
+import jakarta.annotation.PreDestroy;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.rmi.NoSuchObjectException;
@@ -13,8 +16,19 @@ public class InvoiceService {
 
     private final UserService userService;
 
+    @Autowired
     public InvoiceService(UserService userService) {
         this.userService = userService;
+    }
+
+    @PostConstruct
+    public void init() {
+        System.out.println("this is going to be executed after the bean is constructed with its dependencies");
+    }
+
+    @PreDestroy
+    public void shutdown() {
+        System.out.println("this is going to be executed before the bean is destroyed");
     }
 
     List<Invoice> invoices = new CopyOnWriteArrayList<>();
