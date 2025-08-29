@@ -5,6 +5,7 @@ import cihanbeyoglu.model.User;
 import jakarta.annotation.PostConstruct;
 import jakarta.annotation.PreDestroy;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import java.rmi.NoSuchObjectException;
@@ -15,10 +16,12 @@ import java.util.concurrent.CopyOnWriteArrayList;
 public class InvoiceService {
 
     private final UserService userService;
+    private final String baseUrl;
 
     @Autowired
-    public InvoiceService(UserService userService) {
+    public InvoiceService(UserService userService, @Value("${baseurl}") String baseUrl) {
         this.userService = userService;
+        this.baseUrl = baseUrl;
     }
 
     @PostConstruct
@@ -44,7 +47,7 @@ public class InvoiceService {
             throw new NoSuchObjectException("User not found");
         }
 
-        Invoice invoice = new Invoice(userId, amount, "http://www.africau.edu/images/default/sample.pdf");
+        Invoice invoice = new Invoice(userId, amount, baseUrl);
         invoices.add(invoice);
         return invoice;
     }
