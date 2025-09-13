@@ -2,9 +2,16 @@
 GET https://examples.http-client.intellij.net/get
     ?generated-in=IntelliJ IDEA
 
-### MyFancyPdfInvoice create invoice endpoint
+### MyFancyPdfInvoice create invoice endpoint - with request parameters
 POST http://localhost:8080/invoices?user_id=freddieFox&amount=50
 Accept: application/json
+
+### MyFancyPdfInvoice create invoice endpoint - with request body
+POST http://localhost:8080/invoices
+Accept: application/json
+Content-Type: application/json
+
+{"amount": 5000, "userId":"Emre"}
 
 ###
 GET http://localhost:8080/invoices

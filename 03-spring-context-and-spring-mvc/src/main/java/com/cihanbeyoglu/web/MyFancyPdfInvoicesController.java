@@ -1,5 +1,6 @@
 package com.cihanbeyoglu.web;
 
+import com.cihanbeyoglu.dto.InvoiceDTO;
 import com.cihanbeyoglu.model.Invoice;
 import com.cihanbeyoglu.service.InvoiceService;
 import com.cihanbeyoglu.service.UserService;
@@ -35,9 +36,18 @@ public class MyFancyPdfInvoicesController {
     }
 
 
+//    @PostMapping("/invoices")
+////    @ResponseBody
+//    public Invoice createInvoice(@RequestParam("user_id") String user_id, @RequestParam("amount") Integer amount) throws NoSuchObjectException {
+//        return invoiceService.create(user_id, amount);
+//    }
+
     @PostMapping("/invoices")
-//    @ResponseBody
-    public Invoice createInvoice(@RequestParam("user_id") String user_id, @RequestParam("amount") Integer amount) throws NoSuchObjectException {
-        return invoiceService.create(user_id, amount);
+    public Invoice createInvoice(@RequestBody InvoiceDTO invoiceDTO) throws NoSuchObjectException {
+        return invoiceService.create(invoiceDTO.getUserId(), invoiceDTO.getAmount());
     }
+
+
+
+
 }
