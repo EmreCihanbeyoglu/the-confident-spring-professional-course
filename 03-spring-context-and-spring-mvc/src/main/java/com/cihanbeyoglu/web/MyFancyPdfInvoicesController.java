@@ -4,13 +4,16 @@ import com.cihanbeyoglu.dto.InvoiceDTO;
 import com.cihanbeyoglu.model.Invoice;
 import com.cihanbeyoglu.service.InvoiceService;
 import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotBlank;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.rmi.NoSuchObjectException;
 import java.util.List;
 
 @RestController
+@Validated
 public class MyFancyPdfInvoicesController {
 
     private final InvoiceService invoiceService;
@@ -28,5 +31,12 @@ public class MyFancyPdfInvoicesController {
     @PostMapping("/invoices")
     public Invoice createInvoice(@RequestBody @Valid InvoiceDTO invoiceDTO) throws NoSuchObjectException {
         return invoiceService.create(invoiceDTO.getUserId(), invoiceDTO.getAmount());
+    }
+
+    @GetMapping("/invoice")
+    public Invoice getInvoiceByUserId(@RequestParam("userId") @NotBlank String userId) {
+        return invoiceService.findAll().stream()
+                .filter(invoice -> invoice.getUserId().equals(userId))
+                .findAny().orElse(null);
     }
 }

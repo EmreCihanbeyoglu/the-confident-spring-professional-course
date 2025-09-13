@@ -13,6 +13,13 @@ Content-Type: application/json
 
 {"amount": 5000, "userId":"Emre"}
 
+###
+GET http://localhost:8080/invoices
+Accept: application/json
+
+### xml response
+GET http://localhost:8080/invoices
+Accept: */*
 
 ### MyFancyPdfInvoice create invoice endpoint - with NON-VALID request body
 POST http://localhost:8080/invoices
@@ -21,10 +28,7 @@ Content-Type: application/json
 
 {"amount": 50000000, "userId": "   "}
 
-###
-GET http://localhost:8080/invoices
+### validation for request parameters
+GET http://localhost:8080/invoice?userId=
 Accept: application/json
 
-### xml response
-GET http://localhost:8080/invoices
-Accept: */*
