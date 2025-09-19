@@ -9,7 +9,7 @@ import org.springframework.validation.beanvalidation.MethodValidationPostProcess
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 @Configuration
-@ComponentScan(basePackages = {"com.cihanbeyoglu.service", "com.cihanbeyoglu.web"})
+@ComponentScan(basePackages = {"com.cihanbeyoglu.service", "com.cihanbeyoglu.web", "com.cihanbeyoglu.exception"})
 @PropertySource("classpath:application.properties")
 @EnableWebMvc
 public class MyFancyPdfInvoicesApplicationConfiguration {
