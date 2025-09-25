@@ -9,6 +9,8 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.transaction.support.TransactionSynchronizationManager;
 
 import java.rmi.NoSuchObjectException;
 import java.sql.PreparedStatement;
@@ -31,7 +33,10 @@ public class InvoiceService {
         this.baseUrl = baseUrl;
     }
 
+    @Transactional
     public List<Invoice> findAll() {
+        System.out.println("Is a database transaction open? = " + TransactionSynchronizationManager.isActualTransactionActive());
+
         return jdbcTemplate.query("select id, user_id, pdf_url, amount from invoices", (resultSet, rowNum) -> {
             Invoice invoice = new Invoice();
             invoice.setId(resultSet.getObject("id").toString());
@@ -42,7 +47,9 @@ public class InvoiceService {
         });
     }
 
+    @Transactional
     public Invoice create(String userId, Integer amount) throws NoSuchObjectException {
+        System.out.println("Is a database transaction open? = " + TransactionSynchronizationManager.isActualTransactionActive());
 
         String generatedPdfUrl = baseUrl + "/images/default/sample.pdf";
 

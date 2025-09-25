@@ -7,6 +7,9 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.datasource.DataSourceTransactionManager;
+import org.springframework.transaction.TransactionManager;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.validation.beanvalidation.MethodValidationPostProcessor;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
@@ -16,6 +19,7 @@ import javax.sql.DataSource;
 @ComponentScan(basePackages = {"com.cihanbeyoglu.service", "com.cihanbeyoglu.web", "com.cihanbeyoglu.exception"})
 @PropertySource("classpath:application.properties")
 @EnableWebMvc
+@EnableTransactionManagement
 public class MyFancyPdfInvoicesApplicationConfiguration {
 
     @Bean //
@@ -40,5 +44,10 @@ public class MyFancyPdfInvoicesApplicationConfiguration {
     @Bean
     public JdbcTemplate getJdbcTemplate() {
         return new JdbcTemplate(getDataSource());
+    }
+
+    @Bean
+    public TransactionManager getTransactionManager() {
+        return new DataSourceTransactionManager(getDataSource());
     }
 }
